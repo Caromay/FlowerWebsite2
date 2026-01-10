@@ -1,0 +1,57 @@
+
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #e84393;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #e84393c6;
+}
+
+.container .button-group a {
+	display: block;
+    color: #e84393;
+    text-decoration: none;
+}
+
+.container .button-group a:hover{
+	text-decoration: underline;
+}
+
+.container{
+	padding: 20px;
+}
+
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Merge table borders */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    padding: 10px; 
+    text-align: left; 
+    border: 1px solid #ddd; 
+}
