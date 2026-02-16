@@ -1,12 +1,15 @@
 <?php
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "website";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn -> connect_error){
-    die( "Connection Failed" . $conn->connect_error);
+
+if ($conn->connect_error) {
+    die("Connection Failed: " . $conn->connect_error);
 }
 
 $id = $_POST ["id"];
@@ -19,14 +22,17 @@ $email = $_POST ["email"];
 $pass = $_POST ["password"];
 
 $sql = "INSERT INTO register (id, name, address, phone, bday, username, email, password)
-VALUES ('$id', '$name','$address', '$phone', '$bday','$user','$email','$pass') ";
+VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-if ($conn->query($sql)===TRUE){
-    echo "Account Have Been Registered";
-    header("location:index.html");
-}
-else{
-    echo "Please Try Again!";
-}
-$conn->close();
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ssssssss", $id, $name, $address, $phone, $bday, $user, $email, $pass);
+
+if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        header("Location: index.html");
+        exit();
+    } else {
+        $error = "Error: " . mysqli_error($conn);
+    }
+
 ?>
